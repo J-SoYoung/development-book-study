@@ -1,6 +1,8 @@
 // 함수 선언문(function statement)
 // 이름을 생략할 수 없다. 
-// 완료값: undefined, 표현식이 아닌 문이다. => 변수 선언 안된다
+// 완료값: undefined
+// 표현식이 아닌 문은 값으로 표현될 수 없다.
+// 함수 선언문은 변수에 선언할 수 없으므로 값으로 평가될 수 없다 
 // 함수 선언문이 표현식인 문이라면, 완료값이 함수로 출력돼야 한다.
 function add_statement(x,y) {
   return x+y
@@ -17,7 +19,7 @@ var add_expression = function(x,y) {
 // 함수 생성자(arg1,arg2,..,argN,본문)
 // new 연산자와 함께 호출하면 함수 객체를 생성해서 반환한다
 // 클로저 생성X, 함수선언 / 표현식과 다르게 동작한다
-var add_construction = new Function(‘x’,’y’,’return x+y’)
+var add_construction = new Function('x','y','return x+y')
 
 // 화살표함수
 // function키워드 대신 => 를 사용해 간략하게 함수 선언 (동작도 간략화)
