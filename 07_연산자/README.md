@@ -1,22 +1,41 @@
-과제 : https://ko.javascript.info/comparison
+# Q. 질문
 
-- 비교 연산자<br>
-  5 > 4 → true<br>
+### 해당 연산의 결과와 그 이유를 말해보자!<br>
 
-- 문자열비교 : 사전순이다<br>
-  "apple" > "pineapple" → false<br>
+```
+1. "apple" > "pineapple"
+2. "2" > "12"
+3. undefined == null
+4. undefined === null
+```
 
-- 문자열비교 : 사전순이다
-  "2" > "12" → true<br>
+- 1,2번은 문자열 비교, 사전순이다.<br>
+  사전순 비교 기준은 사전 뒤쪽의 문자열이 사전 앞쪽 문자열보다 크다고 판단하면 된다<br>
 
-- 동등비교
-  undefined == null → true<br>
+1. false : a보다 p가 크크로 apple보다 pineapple이 크다는 것은 false
+2. true : "" 안에 있으므로 피연산자는 문자열이다. 2가 더 크므로 true
+3. 동등비교를 하고 있다. 자바스크립트 엔진은 동등비교시 강제 형변환이 이루어진다. <br> undefined와 null은 '값이 없다'는 값이 같으므로 true
+4. 일치비교를 하고 있다. 일치 비교는 피연산자의 타입까지 비교한다. <br>
+   undefined, null은 타입이 다르므로 false <br>
+   <br>
 
-- 일치비교 : 형까지 비교하기 때문에 false
-  undefined === null → false<br>
+### 아래 연산의 결과를 말해보자! <br>
 
-- null과 줄바꿈 0비교, null은 undefined와 같음
-  null == "\n0\n" → false<br>
+```
+let x = 10;
+x += 15;
+-- x
+x --
+x -= 3;
+x %= 5;
+console.log(x);
+```
 
-- 이전보다 형까지 비교, 아예 다름
-  null === +"\n0\n" → false<br>
+- 연산의 과정은 아래와 같다. console.log에 찍힐 결과는 0이다.
+  | x += 15 | x = 25 , 할당연산자 사용, 15를 더한 값을 할당한다 |
+  | --- | --- |
+  | - - x | x = 24 , 단항 산술연산자, -1을 감소시킨 후 할당 |
+  | x - - | x = 24 , 단항 산술연산자, 선할당 후 감소 = 이전 값을 먼저 할당 한 뒤에 연산실행 |
+  | x -= 3 | x = 20 , 이전 산술연산과 함께 연산이 이루어진 후 할당됨 |
+  | x %= 5 | x = 0 , 나머지 연산을 수행한 후 값 할당, 나눠서 나눈 나머지가 없으니 0할당 |
+  | console.log(x) | x 는 0이다. |
