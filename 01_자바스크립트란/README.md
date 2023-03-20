@@ -1,7 +1,7 @@
 
 # Q. [자바스크립트] 질문<br>
 📕 https://www.notion.so/fun-blog/02-17505b9b9fae4b898995f299604aec04
-<br>
+<br> 
 
 ### Q1. react는 node기반으로 동작하는가?
 😊 **NO. React는 브라우저에서 동작하는 자바스크립트 라이브러리입니다**.<br> 
