@@ -1,4 +1,6 @@
 # Q. 질문
+📕 notion : https://www.notion.so/fun-blog/07-efbfccc3b6ef4b75bb98890427049925 <br>
+<br>
 
 ### 해당 연산의 결과와 그 이유를 말해보자!<br>
 
