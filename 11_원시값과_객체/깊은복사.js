@@ -26,3 +26,4 @@ console.log(copy2[3] === arr2[3]); // false
 // 다른 방법에 비해서 성능적으로 느리다
 // JSON.stringify 메소드가 function을 undefined로 처리한다. 
 // 따라서 p2에서는 sayHello 라는 함수가 복사되지 않았다.
+
