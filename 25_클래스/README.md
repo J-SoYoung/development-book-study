@@ -75,3 +75,76 @@ length, prototype, arguments, caller 등의 함수객체의 프로퍼티로 구�
 - 인스턴스가 초기화 <br>
   constructor의 코드가 실행되면 this와 바인딩 된 인스턴스의 프로퍼티가 constrcutor의 인수로 전달된 값으로 초기화된다.
 - 인스턴스 반환
+<br>
+
+### 클래스 프로퍼티
+- 인스턴스 프로퍼티 (public)<br>
+  constructor내부에 정의하는 프로퍼티다. 언제나 public으로 정의된다
+- 접근자 프로퍼티<br>
+  값이 없는 프로퍼티로 읽거나 저장할 때만 사용한다. get, set함수가 있으며 프로토타입 프로퍼티에 저장된다.
+- 클래스 필드 정의, private 필드 정의, static 필드 정의
+    
+    ### 클래스 필드 정의
+    - 클래스 필드란 ? 클래스가 생성할 인스턴스의 프로퍼티이다.
+    - 클래스 몸체에서 클래스 필드*( 프로퍼티-변수 )*를 정의하는 경우 this에 클래스 필드를 바인딩해서는 안된다. this는 constructor와 메서드 내부에서만 유효하다.
+    - 클래스 필드*( 프로퍼티-변수 )*를 참조하는 경우 반드시 this를 사용해야 한다.
+    - 인스턴스를 생성할 때, 클래스 필드*( 프로퍼티-변수 )*를 초기화 해야 한다면 constructor에서 클래스 필드를 초기화해야 한다.
+    - 함수를 클래스 필드*( 프로퍼티-변수 )*에 할당할 수 있다. = 메서드를 정의할 수 있다. 이 경우 프로토타입 메서드가 아닌 인스턴스 메서드가 된다. 그 이유는 클래스 필드는 인스턴스의 프로퍼티이기 때문이다.
+        
+        ```jsx
+        class Person {
+          name;
+        
+          constructor(name) {
+            // 클래스 필드 초기화.
+            this.name = name;
+          }
+        }
+        
+        const me = new Person('Lee');
+        console.log(me); // Person {name: "Lee"}
+        ```
+
+    
+    ### private 필드 정의
+    - private필드에는 #을 붙여준다.
+    - private필드를 참조할 때도 #을 붙여 참조한다.
+    - private필드는 클래스 내부에서만 참조할 수 있다.
+        
+        ```jsx
+        class Person {
+          // private 필드 정의
+          #name = '';
+        
+          constructor(name) {
+            // private 필드 참조
+            this.#name = name;
+          }
+        }
+        
+        const me = new Person('Lee');
+        
+        // private 필드 #name은 클래스 외부에서 참조할 수 없다.
+        console.log(me.#name);
+        // SyntaxError: Private field '#name' must be declared in an enclosing class
+        ```
+        
+    
+    ### static 필드 정의
+    - static 키워드를 사용해 static필드를 정의할 수 있다
+        
+        ```jsx
+        class MyMath {
+          // static public 필드 정의
+          static PI = 22 / 7;
+        
+          // static private 필드 정의
+          static #num = 10;
+        
+          // static 메서드
+          static increment() {
+            return ++MyMath.#num;
+          }
+        }
+        
+        ```
