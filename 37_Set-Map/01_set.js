@@ -1,0 +1,11 @@
+// 배열의 중복 요소 제거
+const uniq = (array) => array.filter((v, i, self) => self.indexOf(v) === i);
+console.log(uniq([2, 1, 2, 3, 4, 3, 4])); // [2, 1, 3, 4]
+
+// Set을 사용한 배열의 중복 요소 제거
+const uniq2 = (array) => [...new Set(array)];
+console.log(uniq2([2, 1, 2, 3, 4, 3, 4])); // [2, 1, 3, 4]
+
+const uniq3 = [2, 1, 2, 3, 4, 3, 4];
+new Set(uniq3);
+console.log(...new Set(uniq3));
