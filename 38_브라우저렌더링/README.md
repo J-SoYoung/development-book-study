@@ -12,22 +12,15 @@
 
 서버로부터 응답된 HTML, CSS, js문서는 문자열로 이루어져 있기 때문에 이를 브라우저가 이해할 수 있게 변환(파싱)한 자료 구조인 DOM과 CSSOM을 생성해 렌더트리를 구성한다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7c6e9f0f-1aff-4312-9eab-b24334836852/Untitled.png)
-
-### HTML파싱과 DOM생성
-
-서버는 브라우저가 요청한 HTML파일을 2진수 바이트 형식으로 응답한다. 
-브라우저는 서버의 HTML데이터를 meta태그의 charset어트리뷰트의 인코딩방식( UTF-8 )에 의해 **문자열로 변환하고, 문법적 의미를 갖는 최소단위인 토큰으로 분해한다. 각 토큰들을 객체로 변환한 뒤, 노드를 생성하여 DOM을 구성한다.** 
-
-### CSS파싱과 CSSOM생성
-
-브라우저 렌더링 엔진은 HTML을 파싱하여 DOM을 구성하면서 CSS를 로드하는 link태그나 style태그를 만나면 **DOM생성을 중지하고 CSS파일의 파싱과정을 거쳐 CSSOM을 생성한다**. CSSOM생성이 끝나면 HTML 파싱을 이어가며 DOM생성을 재개한다. 
-
-### JavaScript파싱과 AST생성
-
-렌더링 엔진은 HTML을 파싱하다 JavaScript파일을 로드하는 script태그를 만나면 DOM생성을 중지하고, src파일을 서버에 요청한다. 
-
-이후 **자바스크립트 엔진에 제어권을 넘겨 자바스크립트를 해석하여 추상적 구문 트리 ( AST )를 생성한다 AST를 기반으로 인터프리터가 실행할 수 있는 바이트코드로 변환하여 실행한다.** 자바스크립트 실행이 끝나면 다시 렌더링 엔진으로 제어권이 넘어와 DOM생성을 재개한다.
+- **HTML파싱과 DOM생성<br>**
+    서버는 브라우저가 요청한 HTML파일을 2진수 바이트 형식으로 응답한다. 
+    브라우저는 서버의 HTML데이터를 meta태그의 charset어트리뷰트의 인코딩방식( UTF-8 )에 의해 문자열로 변환하고, 문법적 의미를 갖는 최소단위인 토큰으로 분해한다. 각 토큰들을 객체로 변환한 뒤, 노드를 생성하여 DOM을 구성한다.
+- **CSS파싱과 CSSOM생성<br>** 
+    브라우저 렌더링 엔진은 HTML을 파싱하여 DOM을 구성하면서 CSS를 로드하는 link태그나 style태그를 만나면 DOM생성을 중지하고 CSS파일의 파싱과정을 거쳐 CSSOM을 생성한다. CSSOM생성이 끝나면     HTML 파싱을 이어가며 DOM생성을 재개한다. 
+- **JavaScript파싱과 AST생성<br>**
+    렌더링 엔진은 HTML을 파싱하다 JavaScript파일을 로드하는 script태그를 만나면 DOM생성을 중지하고, src파일을 서버에 요청한다. 
+    이후 **자바스크립트 엔진에 제어권을 넘겨 자바스크립트를 해석하여 추상적 구문 트리 ( AST )를 생성한다 AST를 기반으로 인터프리터가 실행할 수 있는 바이트코드로 변환하여 실행한다.
+    ** 자바스크립트 실행이 끝나면 다시 렌더링 엔진으로 제어권이 넘어와 DOM생성을 재개한다.
 
 ### 렌더트리 생성
 
@@ -54,11 +47,6 @@
 - 브라우저 창의 리사이징에 의해 뷰포트의 크기가 변경되는 경우
 - HTML의 레이아웃등의 변경이 일어나는 경우
 ( width, height, padding, margin, border, display, position, top, right, left, bottom… )
-    
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f62ba130-5aa7-4c09-a5af-0257182b99d2/Untitled.png)
-    
-
----
 
 ### script태그의 위치가 중요한 의미를 갖는 이유?
 
@@ -68,8 +56,6 @@
 - 자바스크립트 로딩/파싱/실행으로 인해 HTML요소의 렌더링에 로딩 시간이 길어질 수 있다.
 
 이러한 문제를 회피하기 위해 body요소 가장 아래에 자바스크립트를 위치시키는 게 좋다. 
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/86ad1991-8634-4ffd-bb55-5be8929c4135/Untitled.png)
 
 ### script태그의 async / defer 어트리뷰트
 
@@ -82,15 +68,11 @@ async와 defer어트리뷰트를 사용하면 HTML파싱과 외부 자바스크�
 <script defer src='app.js'></script>
 ```
 
-- async 어트리뷰트
-    
+- **async 어트리뷰트<br>**
     HTML파싱과 자바스크립트 파일의 로드가 동시에 진행된다. 자바스크립트 파일의 로드가 완료된 직후에 실행이되며, 이때 HTML파싱이 중단된다. 
-    
     여러개의 script태그에 async어트리뷰트를 지정하면 script태그의 순서와는 상관없이 로드가 완료된 스크립트먼저 실행되므로 자바스크립트의 실행 순서가 보장되지 않는다. 따라서 순서의 보장이 필요한 script에는 async를 사용하지 않아야 한다.
     
-- defer 어트리뷰트
-    
+- **defer 어트리뷰트<br>**
     HTML파싱과 자바스크립트 파일의 로드가 동시에 진행되지만, defer는 HTML파싱이 완료되어 DOM생성이 끝난 후에 자바스크립트가 동작한다. 
     ( = DOM생성 직후 DOMContentLoaded이벤트가 실행되어 JS가 실행 )
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6e484b7c-74ec-4310-88b0-3188d5ea8170/Untitled.png)
