@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <ul>
+      <li id="apple" class="fruit apple">Apple</li>
+      <li id="banana" class="fruit">Banana</li>
+      <li id="orange" class="fruit">Orange</li>
+    </ul>
+    <button>버튼</button>
+    <script>
+      const $elem = document.getElementById("banana");
+      // id 값이 'banana'인 요소 노드를 탐색하여 반환한다.
+      // 두 번째 li 요소가 파싱되어 생성된 요소 노드가 반환된다.
+      $elem.style.color = "red";
+
+      const $elems = document.getElementsByTagName("li");
+      // 취득한 모든 요소 노드의 style.color 프로퍼티 값을 변경한다.
+      // HTMLCollection 객체를 배열로 변환하여 순회하며 color 프로퍼티 값을 변경한다.
+      [...$elems].forEach((elem) => {
+        elem.style.color = "blue";
+      });
+      console.log($elems);
+
+      const $elemClass = document.getElementsByClassName("fruit");
+      // 취득한 모든 요소의 CSS color 프로퍼티 값을 변경한다.
+      [...$elemClass].forEach((elem) => {
+        elem.style.color = "green";
+      });
+
+      // class 값이 'fruit apple'인 요소 노드를 모두 탐색하여 HTMLCollection 객체에 담아 반환한다.
+      // 취득한 모든 요소 노드의 style.color 프로퍼티 값을 변경한다.
+      const $apples = document.getElementsByClassName('fruit apple');
+      [...$apples].forEach(elem => { elem.style.color = 'orange'; });
+
+    </script>
+  </body>
+</html>
