@@ -171,21 +171,16 @@ $button.onclick = null;
 - defaultPrevented : defaultPrevent메서드를 호출하여 이벤트를 취소했는지의 여부
 - isTrusted : 사용자의 행위에 의해 발생한 이벤트인지 여부
 - timeStamp : 이벤트가 발생한 시각부터 경과한 밀리초
+  <br>
+  <br>
 ## 이벤트 전파
+이벤트 전파는 이벤트가 발생한 요소에서 상위 요소로 이벤트가 전달되는 과정을 의미한다. 이벤트 객체는 이벤트를 발생시킨 DOM요소인 이벤트 타깃을 중심으로 DOM트리를 통해 전파된다.<br>
 
-이벤트 전파는 이벤트가 발생한 요소에서 상위 요소로 이벤트가 전달되는 과정을 의미한다. 이벤트 객체는 이벤트를 발생시킨 DOM요소인 이벤트 타깃을 중심으로 DOM트리를 통해 전파된다.
-
-![출처: https://ko.javascript.info/bubbling-and-capturing](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e4dc4335-799d-475d-9592-c2e4d46cbb3b/Untitled.png)
-
-출처: https://ko.javascript.info/bubbling-and-capturing
-
-**캡처링 단계**<br>
+- **캡처링 단계**<br>
 이벤트를 처리하기 위해 이벤트 핸들러를 찾는 과정, 이벤트가 상위 요소에서 하위 요소 방향으로 전파<br>
-
-**타깃 단계**<br>
+- **타깃 단계**<br>
 이벤트가 이벤트 타깃에 도착<br>
-
-**버블링 단계**<br>
+- **버블링 단계**<br>
 이벤트 핸들러가 실행되는 단계로, 이벤트 발생 요소에서 최상위 요소로 이벤트가 전파된다<br>
 
 **이벤트 전파가 발생하는 이유?**<br>
@@ -193,9 +188,8 @@ $button.onclick = null;
 아래 코드를 예시로 들었을 때, li태그마다 이벤트를 걸지 않고, ul태그에만 이벤트 핸들러를 바인딩하여 이벤트를 사용할 수 있게 하기위함.
 
 - ul 요소에 이벤트 핸들러를 바인딩하고 li요소를 클릭하여 이벤트를 발생시켯을 때 이벤트 타깃은 event.target은 li요소이고 event.currentTarget은 ul태그이다. target과 currentTarget의 차이점은 무엇인가?
-- event.target : 이벤트가 발생하는 실제 요소를 가리킨다
-event.currentTarget : 이벤트 핸들러가 바인딩 된 요소를 가리킨다
-target과 currentTarget은 버블링과 캡처링이 일어나는 경우 달라질 수 있다.
+- event.target : 이벤트가 발생하는 실제 요소를 가리킨다<br>
+  event.currentTarget : 이벤트 핸들러가 바인딩 된 요소를 가리킨다. target과 currentTarget은 버블링과 캡처링이 일어나는 경우 달라질 수 있다.
 
 ```html
 <!DOCTYPE html>
