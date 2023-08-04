@@ -35,15 +35,3 @@
 // console.log('3번') // 1번 thdud 2번 3번
 
 
-// -------------- filter함수를 콜백으로 풀어서 사용해봄
-const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
-
-function callback(ele){
-  if(ele.length > 6){
-    return true
-  }else {
-    return false
-  }
-}
-const newords = words.filter(callback)
-console.log(newords)
