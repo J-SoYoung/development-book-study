@@ -1,4 +1,5 @@
-# STUDY_development_books
+# development-book-study
+
 개발 / IT와 관련된 서적을 읽고 공부합니다
 <br>
 <br>
