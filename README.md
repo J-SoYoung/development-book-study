@@ -11,4 +11,4 @@ notion : https://www.notion.so/fun-blog/JavaScript-05556ff8349543cb8ccf7d07ccf8a
 
 ![image](https://github.com/thdud2262/DeepDive_study/assets/85012454/25ee46e6-5ad0-436e-bd4f-f1647b37fdae)
 
-## --
+## Computer-sience-note 
