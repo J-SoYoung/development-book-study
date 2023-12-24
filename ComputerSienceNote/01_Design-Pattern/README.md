@@ -16,3 +16,11 @@
 ## observer pattern
 주체와 옵저버 사이의 관계를 통해 어떤 객체의 상태 변화를 감지하고 처리하는 패턴이다. 
 - ex1 코드 예제 : https://medium.com/gitconnected/javascript-design-patterns-factory-pattern-dc75cf7fd989
+
+## proxy pattern
+프록시는 대상 객체를 대신하는 것을 의미한다. 직접 객체에 접근하여 작업을 하는 것 대신 프록시와 작업을 하게 되는 것이다. 
+- new Proxy로 객체를 생성하여, 대상 객체에 대한 상호작용을 가로채고 제어할 수 있다.
+``` 
+const personProxy = new Proxy(person, {});
+
+```
