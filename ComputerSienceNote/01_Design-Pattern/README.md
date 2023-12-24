@@ -12,6 +12,9 @@
 - 상위 객체와 하위 객체 사이에 느슨한 결합성을 가지며, 이로 인해 객체 사이에 유연성이 있다는 것이 큰 장점이다. 
 - ex1 코드 예제 idea : https://medium.com/gitconnected/javascript-design-patterns-factory-pattern-dc75cf7fd989
 
+## strategy pattern 
+전략 패턴은 런타임 시 알고리즘을 선택할 수 있게 만드는 패턴이다. 객체의 내용을 바꾸고 싶은 경우에 만들어놓은 캡슐화 된 알고리즘을 교체하면서 구현이 가능하다. 
+- ex1 코드 예제 : https://medium.com/volosoft/strategy-pattern-implementation-with-typescript-and-angular-9ad8b1929e9c
 
 ## observer pattern
 주체와 옵저버 사이의 관계를 통해 어떤 객체의 상태 변화를 감지하고 처리하는 패턴이다. 
@@ -25,3 +28,4 @@
 const personProxy = new Proxy(person, {});
 
 ```
+
