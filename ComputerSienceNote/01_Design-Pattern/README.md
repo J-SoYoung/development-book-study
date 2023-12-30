@@ -24,8 +24,34 @@
 프록시는 대상 객체를 대신하는 것을 의미한다. 직접 객체에 접근하여 작업을 하는 것 대신 프록시와 작업을 하게 되는 것이다. 
 - new Proxy로 객체를 생성하여, 대상 객체에 대한 상호작용을 가로채고 제어할 수 있다.
 - ex1,2 예제코드 : https://medium.com/@anisurrahmanbup/javascript-proxy-pattern-proxy-reflect-e9f006017b3d
-``` 
+```jsx 
 const personProxy = new Proxy(person, {});
 
 ```
 
+## Iterator pattern
+iterator를 사용하여 순회할 수 있는 여러 자료구조에서 일관된 방식으로 컬렉션의 요소에 접근할 수 있게 하는 디자인 패턴을 말한다.
+``` jsx 
+ const arr = [1, 2, 3];
+for (const item of arr) {
+  console.log(item); // 1  2  3
+}
+  // item of arr 가 iterator pattern이 될 수 있다.
+```
+
+- ex1 예제코드 : https://medium.com/@flowergeoji/javascript-es6-basic-952ba3ff732
+
+## revealing module pattern
+- 함수 외부에서 참조할 수 있는 데이터와, 접근할 수 없는 데이터를 구분해 생성할 수 있게 하는 디자인 패턴이다. 
+- 즉시 실행 함수와 객체 생성자 함수를 통해 구현 가능하며, 모듈에서 은닉하고 싶은 정보가 있을 때 사용할 수 있다. 
+
+- ex1 예제코드 : https://obarguti.medium.com/javascript-revealing-module-pattern-4b8026ae3b9d
+- ex2 예제코드 : 면접을 위한 CS 전공 지식 노트 (revealing-module-pattern)
+
+## MVC, MVP, MVVM pattern
+- MVC<br>
+  model-view-controller
+- MVP<br>
+  model-view-presenter
+- MVVM<br>
+  model-view-view model 
